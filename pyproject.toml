@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "simple-api"
+version = "0.1.0"
+description = ""
+authors = ["ruslan <ruslanzakharov3008@gmail.com>"]
+readme = "README.md"
+packages = [{include = "simple_api"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.93.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
