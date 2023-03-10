@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 
 from app.api.v1 import routers
+from app.db import Base, engine
+
+Base.metadata.create_all(engine)
 
 
 def bind_routers(application: FastAPI) -> None:

@@ -10,6 +10,7 @@ packages = [{include = "app"}]
 python = "^3.10"
 fastapi = "^0.93.0"
 uvicorn = {extras = ["standard"], version = "^0.20.0"}
+sqlalchemy = "^2.0.5.post1"
 
 
 [build-system]
