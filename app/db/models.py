@@ -8,4 +8,3 @@ class Task(Base):
 
     id = Column(Integer, primary_key=True)
     description = Column(String)
-    creation_date = Column(DateTime)
