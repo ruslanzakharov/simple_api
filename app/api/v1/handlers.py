@@ -3,14 +3,21 @@ from starlette import status
 from sqlalchemy.orm import Session
 
 from app import schemas
-from app.db import storage, db, models
+from app.db import storage, db
 
 tasks_router = APIRouter(prefix='/v1/tasks')
 
 
-@tasks_router.get('')
-async def get_all_tasks():
-    return {'message': 'My Tasks'}
+@tasks_router.get(
+    '',
+    status_code=status.HTTP_200_OK,
+    response_model=list[schemas.Task]
+)
+async def get_all_tasks(
+        session: Session = Depends(db.get_session)
+):
+    tasks = storage.get_all_tasks(session)
+    return tasks
 
 
 @tasks_router.post(
