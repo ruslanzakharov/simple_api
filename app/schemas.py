@@ -1,15 +1,17 @@
 from pydantic import BaseModel
+from typing import Optional
 
 
-class TaskBase(BaseModel):
+class TaskCreateRequest(BaseModel):
     description: str
 
 
-class TaskCreate(TaskBase):
-    pass
+class TaskUpdateRequest(BaseModel):
+    description: Optional[str] = None
+    status: Optional[bool] = None
 
 
-class Task(TaskBase):
+class TaskResponse(BaseModel):
     id: int
     description: str
     status: bool
