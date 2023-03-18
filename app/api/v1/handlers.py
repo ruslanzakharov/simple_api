@@ -69,3 +69,22 @@ async def update_task(
             detail='Task not found'
         )
     return task
+
+
+@tasks_router.get(
+    '/{task_id}',
+    status_code=status.HTTP_200_OK,
+    response_model=schemas.TaskResponse
+)
+async def get_task(
+        task_id: int,
+        session: Session = Depends(db.get_session)
+):
+    try:
+        task = storage.get_task(session, task_id)
+        return task
+    except alc_exc.NoResultFound:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail='Task not found'
+        )
