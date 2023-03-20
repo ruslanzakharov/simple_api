@@ -7,5 +7,5 @@ RUN pip install --upgrade pip \
     && poetry config virtualenvs.create false \
     && poetry install
 
-CMD ["uvicorn", "app.__main__:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "app.__main__:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
 EXPOSE 8000
