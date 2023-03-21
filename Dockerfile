@@ -2,7 +2,9 @@ FROM python:3.10-slim
 
 WORKDIR /simple_api
 COPY . .
-RUN pip install --upgrade pip \
+RUN apt update \
+    && apt install -y libpq-dev gcc \
+    && pip install --upgrade pip \
     && pip install poetry \
     && poetry config virtualenvs.create false \
     && poetry install
